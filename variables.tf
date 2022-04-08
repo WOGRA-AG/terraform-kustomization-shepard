@@ -5,5 +5,5 @@ variable "kubernetes_config_path" {
 
 variable "neo4j_values_yaml_path" {
   description = "neo4j values.yaml path"
-  default = "manifests/neo4j/helm/values.yaml"
+  default     = "manifests/neo4j/helm/values.yaml"
 }
