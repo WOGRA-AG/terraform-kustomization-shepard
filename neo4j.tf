@@ -3,7 +3,7 @@ resource "helm_release" "neo4j" {
 
   repository = "https://helm.neo4j.com/neo4j"
   chart      = "neo4j-standalone"
-  values     = [file(var.neo4j_values_yaml)]
+  values     = [file("manifests/neo4j/helm/values.yaml")]
   version    = "4.4.5"
 
   namespace = "shepard"
