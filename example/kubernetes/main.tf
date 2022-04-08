@@ -6,5 +6,6 @@ terraform {
 }
 
 module "shepard" {
-  source  = "../.."
+  source  = "gitlab.wogra.com/infrastructure/dlr-shepard/local"
+  version = "0.0.4"
 }
