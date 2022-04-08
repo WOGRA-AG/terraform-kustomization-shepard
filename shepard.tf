@@ -1,5 +1,5 @@
 data "kustomization_build" "dlr_shepard_base_build" {
-  path = "./manifests/common"
+  path = "${path.module}/manifests/common"
 }
 
 resource "kustomization_resource" "dlr_shepard_base_resource" {
@@ -8,7 +8,7 @@ resource "kustomization_resource" "dlr_shepard_base_resource" {
 }
 
 data "kustomization_build" "dlr_shepard_backend_build" {
-  path = "./manifests/backend/base"
+  path = "${path.module}/manifests/backend/base"
 }
 
 resource "kustomization_resource" "dlr_shepard_backend_resource" {
@@ -23,7 +23,7 @@ resource "kustomization_resource" "dlr_shepard_backend_resource" {
 }
 
 data "kustomization_build" "dlr_shepard_frontend_build" {
-  path = "./manifests/frontend/overlays/istio"
+  path = "${path.module}/manifests/frontend/overlays/istio"
 }
 
 resource "kustomization_resource" "dlr_shepard_frontend_resource" {
