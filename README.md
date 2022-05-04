@@ -1,7 +1,8 @@
 # Terraform Kustomization Shepard
 
 The `terraform-kustomization-shepard` uses Kustomize manifests
-to install [Shepard][] on any [Kubernetes][] cluster.
+to install [Shepard][], an open source software made by the German Aerospace 
+Center, on any [Kubernetes][] cluster.
 
 ### Important
 **The module is in an VERY early stage of development. Thus, it is 
