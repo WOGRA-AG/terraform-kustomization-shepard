@@ -4,7 +4,6 @@ metadata:
   name: shepard-frontend
   namespace: shepard
 data:
-  vueAppBackend: "backend.shepard.svc.cluster.local:8080/shepard/api/"
-  vueAppOidcAuth: "dex.auth.svc.cluster.local:5556/dex/"
-  vueAppClientId: "kubeflow-oidc-authservice"
-  BaseUrl: "/shepard/"
+  vueAppBackend: "http://backend.shepard:8080/shepard/api"
+  vueAppOidcAuth: "http://keycloak.auth.svc.cluster.local:8080/realms/shepard"
+  vueAppClientId: "shepard"

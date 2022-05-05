@@ -4,9 +4,17 @@ Deploy dlr shepard in kubernetes with terraform
 
 ## Getting started
 
-To make it easy for you to get started with GitLab, here's a list of recommended next steps.
+if not keycloak exists:
+```shell
+kubectl apply -k manifests/keycloak/base
+```
 
-Already a pro? Just edit this README.md and make it your own. Want to make it easy? [Use the template at the bottom](#editing-this-readme)!
+- [ ] create realm "shepard"
+- [ ] create user for shepard
+- [ ] create client for shepard
+
+- [ ] add to manifests/backend/configmap
+- [ ] add to manifests/frontend/configmap
 
 ## Add your files
 
