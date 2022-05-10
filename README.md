@@ -32,7 +32,7 @@ in this project.
 ### Installation
 
 Create a realm, client and user with credentials in your instance of [Keycloak][]
-and supplement `configmap.yaml` in `./manifests/backend/base` and `./manifests/frontend/base` with your configuration.
+and supplement `./manifests/common/configmap.yaml` with your configuration.
 
 In `./examples/kubernetes` you find a [Terraform][] script to install 
 [Shepard][] on your configured [Kubernetes][] cluster. And this is how it 
