@@ -24,14 +24,6 @@ spec:
         - name: backend
           image: "registry.gitlab.com/dlr-shepard/backend:2022.03.821dev"
           imagePullPolicy: Always
-          volumeMounts:
-            - mountPath: /app
-              name: oidc-rsa
-              readOnly: true
-          command:
-            - /bin/bash
-            - -c
-            - source /app/id_rsa.sh
           ports:
             - containerPort: 8080
               name: api
@@ -39,70 +31,64 @@ spec:
             - name: CATALINA_OPTS
               valueFrom:
                 configMapKeyRef:
-                  name: shepard-backend
+                  name: shepard
                   key: catalinaOpts
+            - name: oidc.public
+              valueFrom:
+                configMapKeyRef:
+                  name: shepard
+                  key: oidcPublic
             - name: oidc.authority
               valueFrom:
                 configMapKeyRef:
-                  name: shepard-backend
+                  name: shepard
                   key: oidcAuthority
             - name: influx.host
               valueFrom:
                 configMapKeyRef:
-                  name: shepard-backend
+                  name: shepard
                   key: influxHost
             - name: influx.username
               valueFrom:
                 configMapKeyRef:
-                  name: shepard-backend
+                  name: shepard
                   key: influxUsername
             - name: influx.password
               valueFrom:
                 configMapKeyRef:
-                  name: shepard-backend
+                  name: shepard
                   key: influxPassword
             - name: neo4j.host
               valueFrom:
                 configMapKeyRef:
-                  name: shepard-backend
+                  name: shepard
                   key: neo4jHost
             - name: neo4j.username
               valueFrom:
                 configMapKeyRef:
-                  name: shepard-backend
+                  name: shepard
                   key: neo4jUsername
             - name: neo4j.password
               valueFrom:
                 configMapKeyRef:
-                  name: shepard-backend
+                  name: shepard
                   key: neo4jPassword
             - name: mongo.host
               valueFrom:
                 configMapKeyRef:
-                  name: shepard-backend
+                  name: shepard
                   key: mongoHost
             - name: mongo.username
               valueFrom:
                 configMapKeyRef:
-                  name: shepard-backend
+                  name: shepard
                   key: mongoUsername
             - name: mongo.password
               valueFrom:
                 configMapKeyRef:
-                  name: shepard-backend
+                  name: shepard
                   key: mongoPassword
-      initContainers:
-        - name: init-oidc
-          image: "gitlab-registry.wogra.com/developer/wogra/os4ml/shepard-oidc-init:latest"
-          volumeMounts:
-            - mountPath: /var/shepard
-              name: oidc-rsa
-              readOnly: false
-
       imagePullSecrets:
         - name: registry-credentials
-      volumes:
-        - name: oidc-rsa
-          emptyDir: {}
 
       serviceAccountName: default-shepard

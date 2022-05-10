@@ -1,3 +1,0 @@
-requests
-six
-cryptography~=36.0.2

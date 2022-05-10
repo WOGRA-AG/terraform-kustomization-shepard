@@ -23,7 +23,7 @@ resource "kustomization_resource" "dlr_shepard_backend_resource" {
 }
 
 data "kustomization_build" "dlr_shepard_frontend_build" {
-  path = "${path.module}/manifests/frontend/overlays/istio"
+  path = "${path.module}/manifests/frontend/base"
 }
 
 resource "kustomization_resource" "dlr_shepard_frontend_resource" {

@@ -31,22 +31,22 @@ spec:
             - name: VUE_APP_BACKEND
               valueFrom:
                 configMapKeyRef:
-                  name: shepard-frontend
+                  name: shepard
                   key: vueAppBackend
             - name: VUE_APP_OIDC_AUTHORITY
               valueFrom:
                 configMapKeyRef:
-                  name: shepard-frontend
+                  name: shepard
                   key: vueAppOidcAuth
             - name: VUE_APP_CLIENT_ID
               valueFrom:
                 configMapKeyRef:
-                  name: shepard-frontend
+                  name: shepard
                   key: vueAppClientId
             - name: VUE_APP_BASE_URL
               valueFrom:
                 configMapKeyRef:
-                  name: shepard-frontend
+                  name: shepard
                   key: vueAppOidcAuth
           resources:
             limits:

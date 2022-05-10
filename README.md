@@ -13,14 +13,27 @@ Nobody wants complicated installations. We neither, so we try to keep
 things as simple as possible. So how does it work?
 
 ### Prerequisites
-In fact, all it takes is a running [Kubernetes][] cluster to get started.
+In fact, all it takes is a running [Kubernetes][] cluster and instance of
+[Keycloak][] to get started.
+
 With [k3d][] you can do it like this, for example
 
 ```sh
 k3d cluster create shepard-cluster
 ```
 
+If you don't have a running Keycloak instance and want to deploy one in your cluster, just run 
+
+```shell
+kubectl apply -k manifests/keycloak/base
+```
+in this project.
+
 ### Installation
+
+Create a realm, client and user with credentials in your instance of [Keycloak][]
+and supplement `./manifests/common/configmap.yaml` with your configuration.
+
 In `./examples/kubernetes` you find a [Terraform][] script to install 
 [Shepard][] on your configured [Kubernetes][] cluster. And this is how it 
 works:
@@ -45,6 +58,7 @@ of the Free State of Bavaria.
 [Kubernetes]: https://kubernetes.io/
 [Shepard]: https://gitlab.com/dlr-shepard
 [k3d]: https://k3d.io
+[Keycloak]: https://www.keycloak.org/
 [WOGRA AG]: https://www.wogra.com/
 [Os4ML]: https://github.com/WOGRA-AG/Os4ML
 [docs]: https://wogra-ag.github.io/os4ml-docs/

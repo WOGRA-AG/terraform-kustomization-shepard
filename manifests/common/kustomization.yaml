@@ -5,3 +5,4 @@ resources:
   - namespace.yaml
   - registry-credentials.yml
   - service-account.yaml
+  - configmap.yaml
