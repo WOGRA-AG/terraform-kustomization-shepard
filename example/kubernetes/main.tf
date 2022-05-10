@@ -6,5 +6,6 @@ terraform {
 }
 
 module "shepard" {
-  source = "../.."
+  source  = "WOGRA-AG/shepard/kustomization"
+  version = "0.0.5"
 }
