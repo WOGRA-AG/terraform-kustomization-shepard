@@ -1,0 +1,20 @@
+apiVersion: networking.istio.io/v1beta1
+kind: VirtualService
+metadata:
+  name: keycloak
+  namespace: keycloak
+spec:
+  gateways:
+    - keycloak/keycloak-gateway
+  hosts:
+    - '*'
+  http:
+    - name: "keycloak-route"
+      match:
+        - uri:
+            prefix: /
+      route:
+        - destination:
+            host: keycloak.keycloak.svc.cluster.local
+            port:
+              number: 8080

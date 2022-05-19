@@ -7,15 +7,29 @@ resource "kustomization_resource" "dlr_shepard_base_resource" {
   manifest = data.kustomization_build.dlr_shepard_base_build.manifests[each.value]
 }
 
+data "kustomization_build" "dlr_shepard_gateway" {
+  path = var.tls ? "${path.module}/manifests/acme-resources" : "${path.module}/manifests/local-shepard-gateway"
+}
+
+resource "kustomization_resource" "dlr_shepard_gateway" {
+  for_each = data.kustomization_build.dlr_shepard_gateway.ids
+  manifest = replace(data.kustomization_build.dlr_shepard_gateway.manifests[each.value], "$SHEPARD_DNS_NAME", var.shepard_dns_name)
+  depends_on = [
+    kustomization_resource.dlr_shepard_base_resource
+  ]
+}
+
 data "kustomization_build" "dlr_shepard_backend_build" {
-  path = "${path.module}/manifests/backend/base"
+  path = "${path.module}/manifests/backend/overlays/istio"
 }
 
 resource "kustomization_resource" "dlr_shepard_backend_resource" {
   for_each = data.kustomization_build.dlr_shepard_backend_build.ids
-  manifest = data.kustomization_build.dlr_shepard_backend_build.manifests[each.value]
+  manifest = replace(data.kustomization_build.dlr_shepard_backend_build.manifests[each.value], "$SHEPARD_DNS_NAME", var.shepard_dns_name)
 
   depends_on = [
+    kustomization_resource.dlr_shepard_base_resource,
+    kustomization_resource.dlr_shepard_gateway,
     helm_release.influxdb,
     helm_release.mongodb,
     helm_release.neo4j
@@ -23,12 +37,12 @@ resource "kustomization_resource" "dlr_shepard_backend_resource" {
 }
 
 data "kustomization_build" "dlr_shepard_frontend_build" {
-  path = "${path.module}/manifests/frontend/base"
+  path = "${path.module}/manifests/frontend/overlays/istio"
 }
 
 resource "kustomization_resource" "dlr_shepard_frontend_resource" {
   for_each = data.kustomization_build.dlr_shepard_frontend_build.ids
-  manifest = data.kustomization_build.dlr_shepard_frontend_build.manifests[each.value]
+  manifest = replace(data.kustomization_build.dlr_shepard_frontend_build.manifests[each.value], "$SHEPARD_DNS_NAME", var.shepard_dns_name)
 
   depends_on = [
     kustomization_resource.dlr_shepard_backend_resource
