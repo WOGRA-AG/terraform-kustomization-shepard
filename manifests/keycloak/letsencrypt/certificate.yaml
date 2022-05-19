@@ -10,4 +10,4 @@ spec:
     name: letsencrypt-prod
     kind: ClusterIssuer
   dnsNames:
-    - "keycloak.os4ml.wogra.com"
+    - "keycloak.example.com"

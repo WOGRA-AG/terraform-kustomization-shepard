@@ -14,7 +14,7 @@ spec:
       tls:
         httpsRedirect: false
       hosts:
-        - "keycloak.os4ml.wogra.com"
+        - "keycloak.example.com"
     - port:
         number: 443
         name: https
@@ -23,4 +23,4 @@ spec:
         mode: SIMPLE
         credentialName: keycloak-ingress-cert
       hosts:
-        - "keycloak.os4ml.wogra.com"
+        - "keycloak.example.com"
