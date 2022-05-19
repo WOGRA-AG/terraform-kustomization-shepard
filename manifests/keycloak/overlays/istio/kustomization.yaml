@@ -3,5 +3,5 @@ kind: Kustomization
 namespace: keycloak
 resources:
   - ../../base
-  - ../../letsencrypt
+  - ../../acme-resources
   - virtual-service.yaml
