@@ -18,3 +18,25 @@ spec:
             host: keycloak.keycloak.svc.cluster.local
             port:
               number: 8080
+---
+apiVersion: networking.istio.io/v1beta1
+kind: VirtualService
+metadata:
+  name: keycloak-dex
+  namespace: keycloak
+spec:
+  gateways:
+    - os4ml/os4ml-gateway
+    - keycloak/keycloak-gateway
+  hosts:
+    - '*'
+  http:
+    - name: "keycloak-dex-auth-route"
+      match:
+        - uri:
+            prefix: /dex/
+      route:
+        - destination:
+            host: dex.auth.svc.cluster.local
+            port:
+              number: 5556
