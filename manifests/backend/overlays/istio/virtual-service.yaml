@@ -12,7 +12,7 @@ spec:
     - name: "shepard-backend-route"
       match:
         - uri:
-            prefix: /api/shepard
+            prefix: /shepard/api
       route:
         - destination:
             host: backend.shepard.svc.cluster.local

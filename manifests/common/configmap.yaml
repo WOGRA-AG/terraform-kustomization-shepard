@@ -5,8 +5,8 @@ metadata:
   namespace: shepard
 data:
   catalinaOpts: "-Xms2048m -Xmx2048m"
-  oidcPublic: "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAoXBU1RadgyMuXGNI1QCkSN7kPSQUPRg1fRvvLiMPUeOZ3WDiOphZx7i/nP0EZ6NSSPZ2mfhURZ2tqVitsP6eldFkTT9xlb48V9SG7hSkfk2gyI2aKHa7uExbkIL3+H4hixLmMmmSO160unkqTzHPE+FJFIg/cE7SOycoGt5RWXoWqeTEwB3wWQXjudyr4qX2p3BbPnUIH77rQIpA9XLniFHGQ6J4ydfDM7NIF+MFw9cCl+xh1QXx3+Pl2MDLzEnjo3SefNytolO7kxCEGcUtUC5ZTUuueXk8ry/toTsGDD1mb0NzP3ZgI9XW6HE4dtw3lEHCQx9k4CSnO0++ziUAswIDAQAB"
-  oidcAuthority: "https://keycloak.os4ml.wogra.com/realms/shepard"
+  oidcPublic: "$OIDC_PUBLIC_KEY"
+  oidcAuthority: "$KEYCLOAK_URL/realms/shepard"
   influxHost: "influxdb.shepard.svc.cluster.local:8086"
   influxUsername: "admin"
   influxPassword: "influx1234"
@@ -16,6 +16,6 @@ data:
   mongoHost: "mongodb-svc.shepard.svc.cluster.local:27017"
   mongoUsername: "mongodb-user"
   mongoPassword: "Mongodb1234"
-  vueAppBackend: "https://shepard.os4ml.wogra.com/shepard/api"
-  vueAppOidcAuth: "https://keycloak.os4ml.wogra.com/realms/shepard"
+  vueAppBackend: "$SHEPARD_DNS_NAME/shepard/api"
+  vueAppOidcAuth: "$KEYCLOAK_URL/realms/shepard"
   vueAppClientId: "shepard"

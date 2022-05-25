@@ -4,7 +4,10 @@ data "kustomization_build" "dlr_shepard_base_build" {
 
 resource "kustomization_resource" "dlr_shepard_base_resource" {
   for_each = data.kustomization_build.dlr_shepard_base_build.ids
-  manifest = data.kustomization_build.dlr_shepard_base_build.manifests[each.value]
+  manifest = replace(
+    replace(data.kustomization_build.dlr_shepard_base_build.manifests[each.value], "$SHEPARD_DNS_NAME", var.shepard_dns_name),
+    "$KEYCLOAK_URL", var.keycloak_url
+  )
 }
 
 data "kustomization_build" "dlr_shepard_gateway" {
@@ -25,7 +28,7 @@ data "kustomization_build" "dlr_shepard_backend_build" {
 
 resource "kustomization_resource" "dlr_shepard_backend_resource" {
   for_each = data.kustomization_build.dlr_shepard_backend_build.ids
-  manifest = replace(data.kustomization_build.dlr_shepard_backend_build.manifests[each.value], "$SHEPARD_DNS_NAME", var.shepard_dns_name)
+  manifest = data.kustomization_build.dlr_shepard_backend_build.manifests[each.value]
 
   depends_on = [
     kustomization_resource.dlr_shepard_base_resource,
@@ -42,7 +45,7 @@ data "kustomization_build" "dlr_shepard_frontend_build" {
 
 resource "kustomization_resource" "dlr_shepard_frontend_resource" {
   for_each = data.kustomization_build.dlr_shepard_frontend_build.ids
-  manifest = replace(data.kustomization_build.dlr_shepard_frontend_build.manifests[each.value], "$SHEPARD_DNS_NAME", var.shepard_dns_name)
+  manifest = data.kustomization_build.dlr_shepard_frontend_build.manifests[each.value]
 
   depends_on = [
     kustomization_resource.dlr_shepard_backend_resource

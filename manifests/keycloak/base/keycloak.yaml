@@ -17,7 +17,7 @@ spec:
       containers:
         - name: keycloak
           image: quay.io/keycloak/keycloak:18.0.0
-          args: ["start-dev"]
+          args: ["start"]
           env:
             - name: KEYCLOAK_ADMIN
               value: "admin"
@@ -25,6 +25,8 @@ spec:
               value: "admin"
             - name: KC_PROXY
               value: edge
+            - name: KC_HOSTNAME
+              value: "keycloak.example.com"
           ports:
             - name: http
               containerPort: 8080
