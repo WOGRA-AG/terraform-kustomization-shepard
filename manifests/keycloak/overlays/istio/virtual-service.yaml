@@ -26,7 +26,6 @@ metadata:
   namespace: keycloak
 spec:
   gateways:
-    - os4ml/os4ml-gateway
     - keycloak/keycloak-gateway
   hosts:
     - '*'

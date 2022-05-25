@@ -5,8 +5,8 @@ metadata:
   namespace: shepard
 data:
   catalinaOpts: "-Xms2048m -Xmx2048m"
-  oidcPublic: "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAj0QyXJ80FnFJRvmZKow76rUGUAub09PN6auN03dDCxyUOAoZdi72od+jp1EVJppw72eG0U14517MOmqRKyj9j1Nd05KvAUV/HZoZm5FztsdAPo9q54mneeH4J/RQDDJD6XA6Zb62A29upvSHyfUUDxXjc2dWUrE74uerVShzjAW4VZcZOGQDYiYzD+ZcMwKYftePqRs8jO/l3rhTgf/kVQf+Wkp8qbA5upzFiZQv2MbRpUwycb1hs+eBkLpciKvDQoQk2t8FD3BYCwyOxPbJ2hCnMYlp6IGcXLZD+FnEhZJs85MJYEVVTkgt0l3GQ5fP7BVWGv8E0s9lb3Oz11j+twIDAQAB"
-  oidcAuthority: "http://keycloak.auth.svc.cluster.local:8080/realms/shepard"
+  oidcPublic: "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAoXBU1RadgyMuXGNI1QCkSN7kPSQUPRg1fRvvLiMPUeOZ3WDiOphZx7i/nP0EZ6NSSPZ2mfhURZ2tqVitsP6eldFkTT9xlb48V9SG7hSkfk2gyI2aKHa7uExbkIL3+H4hixLmMmmSO160unkqTzHPE+FJFIg/cE7SOycoGt5RWXoWqeTEwB3wWQXjudyr4qX2p3BbPnUIH77rQIpA9XLniFHGQ6J4ydfDM7NIF+MFw9cCl+xh1QXx3+Pl2MDLzEnjo3SefNytolO7kxCEGcUtUC5ZTUuueXk8ry/toTsGDD1mb0NzP3ZgI9XW6HE4dtw3lEHCQx9k4CSnO0++ziUAswIDAQAB"
+  oidcAuthority: "https://keycloak.os4ml.wogra.com/realms/shepard"
   influxHost: "influxdb.shepard.svc.cluster.local:8086"
   influxUsername: "admin"
   influxPassword: "influx1234"
@@ -16,6 +16,6 @@ data:
   mongoHost: "mongodb-svc.shepard.svc.cluster.local:27017"
   mongoUsername: "mongodb-user"
   mongoPassword: "Mongodb1234"
-  vueAppBackend: "http://backend.shepard:8080/shepard/api"
-  vueAppOidcAuth: "http://keycloak.auth.svc.cluster.local:8080/realms/shepard"
+  vueAppBackend: "https://shepard.os4ml.wogra.com/shepard/api"
+  vueAppOidcAuth: "https://keycloak.os4ml.wogra.com/realms/shepard"
   vueAppClientId: "shepard"

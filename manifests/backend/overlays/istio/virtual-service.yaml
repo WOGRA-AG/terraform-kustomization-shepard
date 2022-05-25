@@ -7,7 +7,7 @@ spec:
   gateways:
     - shepard/shepard-gateway
   hosts:
-    - '$SHEPARD_DNS_NAME'
+    - '*'
   http:
     - name: "shepard-backend-route"
       match:
