@@ -5,8 +5,8 @@ metadata:
   namespace: shepard
 data:
   catalinaOpts: "-Xms2048m -Xmx2048m"
-  oidcPublic: "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAj0QyXJ80FnFJRvmZKow76rUGUAub09PN6auN03dDCxyUOAoZdi72od+jp1EVJppw72eG0U14517MOmqRKyj9j1Nd05KvAUV/HZoZm5FztsdAPo9q54mneeH4J/RQDDJD6XA6Zb62A29upvSHyfUUDxXjc2dWUrE74uerVShzjAW4VZcZOGQDYiYzD+ZcMwKYftePqRs8jO/l3rhTgf/kVQf+Wkp8qbA5upzFiZQv2MbRpUwycb1hs+eBkLpciKvDQoQk2t8FD3BYCwyOxPbJ2hCnMYlp6IGcXLZD+FnEhZJs85MJYEVVTkgt0l3GQ5fP7BVWGv8E0s9lb3Oz11j+twIDAQAB"
-  oidcAuthority: "http://keycloak.auth.svc.cluster.local:8080/realms/shepard"
+  oidcPublic: "$OIDC_PUBLIC_KEY"
+  oidcAuthority: "$KEYCLOAK_URL/realms/shepard"
   influxHost: "influxdb.shepard.svc.cluster.local:8086"
   influxUsername: "admin"
   influxPassword: "influx1234"
@@ -16,6 +16,6 @@ data:
   mongoHost: "mongodb-svc.shepard.svc.cluster.local:27017"
   mongoUsername: "mongodb-user"
   mongoPassword: "Mongodb1234"
-  vueAppBackend: "http://backend.shepard:8080/shepard/api"
-  vueAppOidcAuth: "http://keycloak.auth.svc.cluster.local:8080/realms/shepard"
+  vueAppBackend: "$SHEPARD_DNS_NAME/shepard/api"
+  vueAppOidcAuth: "$KEYCLOAK_URL/realms/shepard"
   vueAppClientId: "shepard"

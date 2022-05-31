@@ -13,3 +13,9 @@ volumes:
 config:
   dbms.default_database: "neo4j"
   dbms.config.strict_validation: "true"
+
+services:
+  neo4j:
+    enabled: false
+    spec:
+      type: ClusterIP
